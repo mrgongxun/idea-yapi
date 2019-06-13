@@ -1,0 +1,41 @@
+<idea-plugin>
+  <id>idea-yapi</id>
+  <name>idea-yapi</name>
+  <version>1.0</version>
+  <vendor email="gongxun@superfeng.com" url="http://www.superfeng.com">superfeng</vendor>
+
+  <description>
+    <![CDATA[
+      idea yapi<br>
+      <em>support dubbo api and api upload</em>
+    ]]>
+  </description>
+
+  <change-notes>
+    <![CDATA[
+      upload api to yapi<br>
+      <em>support dubbo api and api upload</em>
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="173.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+    <action id="idea-yapi" class="com.qbb.interaction.UploadToYapi" text="idea-yapi" description="idea-yapi">
+      <add-to-group group-id="EditorLangPopupMenu" anchor="first"/>
+    </action>
+  </actions>
+
+</idea-plugin>
