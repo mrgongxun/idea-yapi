@@ -13,8 +13,33 @@
 
   <change-notes>
     <![CDATA[
-      upload api to yapi<br>
-      <em>support dubbo api and api upload</em>
+      <a href="https://github.com/diwand/YapiIdeaUploadPlugin">使用方式</a> <br>
+      <em> support dubbo api</em>
+      <em> support  api</em> <br>
+      <em> support Batch upload</em><br>
+      <em> support constant </em> <br>
+      <em> support java download<br>
+      <em> support RequestAttribute & RequestHeader <br>
+      <em> support modules </em> <br>
+      <em>
+        - fix 多级泛型问题
+        - 支持@NotNull 注解
+        - 支持PutMapping,DeleteMapping,
+        - 支持 model 接收参数和application/x-www-form-urlencoded
+        - 支持自定义分类 <br>
+        - 支持类级别 分类定义
+        - fixbug request 为 List<Long> 等 bug
+        - fix code.zip 概率性一样问题
+        - fix HttpServletRequest&HttpServletResponse 存在下Req_body_type 类型问题
+        - 支持XXXMapping 不写value
+        - 解决 response <> 在备注中显示 问题
+        - 支持request param 备注从注释中获取
+        - 补充支持A,B,E,K,V 泛型写法
+        - 支持PathVariable
+        - 支持类级别路径引用
+        - 支持多个实体接收
+        - 支持 Response<List<User>> 泛型
+      </em>
     ]]>
   </change-notes>
 

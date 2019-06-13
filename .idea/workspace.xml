@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca65b633-cb4a-4c38-8121-ad5870508d05" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="ca65b633-cb4a-4c38-8121-ad5870508d05" name="Default Changelist" comment="添加 .gitignore 文件">
+      <change afterPath="$PROJECT_DIR$/bakup/idea-yapi.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/idea-yapi/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/idea-yapi/META-INF/plugin.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+            <state relative-caret-position="255">
+              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -97,6 +98,11 @@
               <item name="idea-yapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="idea-yapi" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="idea-yapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="idea-yapi" type="462c0819:PsiDirectoryNode" />
+              <item name="bakup" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -126,7 +132,11 @@
     <option name="AUTOSCROLL_FROM_SOURCE" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/bakup" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/com/qbb" />
       <recent name="$PROJECT_DIR$/src/com/qbb/interaction" />
     </key>
@@ -274,12 +284,20 @@
       <workItem from="1560411569743" duration="5427000" />
       <workItem from="1560419826206" duration="386000" />
       <workItem from="1560420350220" duration="150000" />
-      <workItem from="1560420949814" duration="246000" />
+      <workItem from="1560420949814" duration="598000" />
     </task>
+    <task id="LOCAL-00001" summary="添加 .gitignore 文件">
+      <created>1560421269119</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1560421269120</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7202000" />
+    <option name="totallyTimeSpent" value="7554000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -323,6 +341,10 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="添加 .gitignore 文件" />
+    <option name="LAST_COMMIT_MESSAGE" value="添加 .gitignore 文件" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -599,8 +621,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="9" lean-forward="true" selection-start-line="21" selection-start-column="9" selection-end-line="21" selection-end-column="9" />
+        <state relative-caret-position="255">
+          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
         </state>
       </provider>
     </entry>
