@@ -131,11 +131,11 @@ public class UploadToYapi extends AnAction {
                 yapiSaveParam.setReq_body_form(yapiApiDTO.getReq_body_form());
                 yapiSaveParam.setReq_body_type(yapiApiDTO.getReq_body_type());
                 yapiSaveParam.setReq_params(yapiApiDTO.getReq_params());
-                if (!Strings.isNullOrEmpty(yapiApiDTO.getMenu())) {
-                    yapiSaveParam.setMenu(yapiApiDTO.getMenu());
-                } else {
+//                if (!Strings.isNullOrEmpty(yapiApiDTO.getMenu())) {
+//                    yapiSaveParam.setMenu(yapiApiDTO.getMenu());
+//                } else {
                     yapiSaveParam.setMenu(YapiConstant.menu);
-                }
+//                }
                 try {
                     // 上传
                     YapiResponse yapiResponse = new UploadYapi().uploadSave(yapiSaveParam, attachUpload, project.getBasePath());

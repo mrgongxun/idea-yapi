@@ -16,7 +16,7 @@ import java.util.Objects;
  *
  * @version 1.0 2019年06月14日 15:02 by 宫珣（gongxun@cloud-young.com）创建
  */
-@State(name = "YApiConfig", storages = {@com.intellij.openapi.components.Storage})
+@State(name = "YApiConfig", storages = {@com.intellij.openapi.components.Storage(file = "$APP_CONFIG$/YApiConfig.xml")})
 public class PersistentState implements PersistentStateComponent<Element> {
 
     private String config;
