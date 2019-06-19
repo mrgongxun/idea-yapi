@@ -39,6 +39,8 @@
         - 支持类级别路径引用
         - 支持多个实体接收
         - 支持 Response<List<User>> 泛型
+        - 支持 Setting 中配置
+        - 支持 配置持久化
       </em>
     ]]>
   </change-notes>
