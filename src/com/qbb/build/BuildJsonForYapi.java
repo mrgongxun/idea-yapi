@@ -21,10 +21,7 @@ import com.qbb.dto.YapiHeaderDTO;
 import com.qbb.dto.YapiPathVariableDTO;
 import com.qbb.dto.YapiQueryDTO;
 import com.qbb.upload.UploadYapi;
-import com.qbb.util.DesUtil;
-import com.qbb.util.FileToZipUtil;
-import com.qbb.util.FileUnZipUtil;
-import com.qbb.util.PsiAnnotationSearchUtil;
+import com.qbb.util.*;
 import org.codehaus.jettison.json.JSONException;
 
 import java.io.File;
@@ -36,7 +33,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 /**
- * @description: 为了yapi 创建的
+ * @description: 为了yApi 创建的
  * @author: chengsheng@qbb6.com
  * @date: 2018/10/27
  */ 
@@ -47,60 +44,59 @@ public class BuildJsonForYapi{
         notificationGroup = new NotificationGroup("Java2Json.NotificationGroup", NotificationDisplayType.BALLOON, true);
     }
 
-    static Set<String> filePaths=new CopyOnWriteArraySet<>();
+    private static Set<String> filePaths = new CopyOnWriteArraySet<>();
 
     /**
      * 批量生成 接口数据
-     * @param e
+     * @param anActionEvent
      * @return
      */
-    public ArrayList<YapiApiDTO> actionPerformedList(AnActionEvent e,String attachUpload){
-        Editor editor = (Editor) e.getDataContext().getData(CommonDataKeys.EDITOR);
-        PsiFile psiFile = (PsiFile) e.getDataContext().getData(CommonDataKeys.PSI_FILE);
-        String selectedText=e.getRequiredData(CommonDataKeys.EDITOR).getSelectionModel().getSelectedText();
+    public ArrayList<YapiApiDTO> actionPerformedList(AnActionEvent anActionEvent, String attachUpload) {
+        Editor editor = anActionEvent.getDataContext().getData(CommonDataKeys.EDITOR);
+        PsiFile psiFile = anActionEvent.getDataContext().getData(CommonDataKeys.PSI_FILE);
+        String selectedText = anActionEvent.getRequiredData(CommonDataKeys.EDITOR).getSelectionModel().getSelectedText();
         Project project = editor.getProject();
-        if(Strings.isNullOrEmpty(selectedText)){
-            Notification error = notificationGroup.createNotification("please select method or class", NotificationType.ERROR);
-            Notifications.Bus.notify(error, project);
+        if (Strings.isNullOrEmpty(selectedText)) {
+            NotifyUtil.log(notificationGroup, project, "please select method or class", NotificationType.ERROR);
             return null;
         }
         PsiElement referenceAt = psiFile.findElementAt(editor.getCaretModel().getOffset());
         PsiClass selectedClass = (PsiClass) PsiTreeUtil.getContextOfType(referenceAt, new Class[]{PsiClass.class});
-        String classMenu=null;
-        if(Objects.nonNull(selectedClass.getDocComment())){
-             classMenu=DesUtil.getMenu(selectedClass.getText());
+        String classMenu = null;
+        if (Objects.nonNull(selectedClass.getDocComment())) {
+            classMenu = DesUtil.getMenu(selectedClass.getText());
         }
-        ArrayList<YapiApiDTO> yapiApiDTOS=new ArrayList<>();
-        if(selectedText.equals(selectedClass.getName())){
-            PsiMethod[] psiMethods=selectedClass.getMethods();
-            for(PsiMethod psiMethodTarget:psiMethods) {
+        ArrayList<YapiApiDTO> yapiApiDTOS = new ArrayList<>();
+        if (selectedText.equals(selectedClass.getName())) {
+            PsiMethod[] psiMethods = selectedClass.getMethods();
+            for (PsiMethod psiMethodTarget : psiMethods) {
                 //去除私有方法
-                if(!psiMethodTarget.getModifierList().hasModifierProperty("private")) {
-                    YapiApiDTO yapiApiDTO=actionPerformed(selectedClass, psiMethodTarget, project, psiFile,attachUpload);
-                    if(Objects.isNull(yapiApiDTO.getMenu())){
+                if (!psiMethodTarget.getModifierList().hasModifierProperty("private")) {
+                    YapiApiDTO yapiApiDTO = actionPerformed(selectedClass, psiMethodTarget, project, psiFile, attachUpload);
+                    if (Objects.isNull(yapiApiDTO.getMenu())) {
                         yapiApiDTO.setMenu(classMenu);
                     }
                     yapiApiDTOS.add(yapiApiDTO);
                 }
             }
-        }else{
-            PsiMethod[] psiMethods =selectedClass.getAllMethods();
+        } else {
+            PsiMethod[] psiMethods = selectedClass.getAllMethods();
             //寻找目标Method
-            PsiMethod psiMethodTarget=null;
-            for(PsiMethod psiMethod:psiMethods){
-                if(psiMethod.getName().equals(selectedText)){
-                    psiMethodTarget=psiMethod;
+            PsiMethod psiMethodTarget = null;
+            for (PsiMethod psiMethod : psiMethods) {
+                if (psiMethod.getName().equals(selectedText)) {
+                    psiMethodTarget = psiMethod;
                     break;
                 }
             }
-            if(Objects.nonNull(psiMethodTarget)) {
-                YapiApiDTO yapiApiDTO= actionPerformed(selectedClass, psiMethodTarget, project, psiFile,attachUpload);
-                if(Objects.isNull(yapiApiDTO.getMenu())){
+            if (Objects.nonNull(psiMethodTarget)) {
+                YapiApiDTO yapiApiDTO = actionPerformed(selectedClass, psiMethodTarget, project, psiFile, attachUpload);
+                if (Objects.isNull(yapiApiDTO.getMenu())) {
                     yapiApiDTO.setMenu(classMenu);
                 }
                 yapiApiDTOS.add(yapiApiDTO);
-            }else{
-                Notification error = notificationGroup.createNotification("can not find method:"+selectedText, NotificationType.ERROR);
+            } else {
+                Notification error = notificationGroup.createNotification("can not find method:" + selectedText, NotificationType.ERROR);
                 Notifications.Bus.notify(error, project);
                 return null;
             }
@@ -846,77 +842,80 @@ public class BuildJsonForYapi{
     }
 
     /**
-     * @description: 获得集合
-     * @param: [kv, classTypeName, remark, psiClass, project, name, pName]
-     * @return: void
-     * @author: chengsheng@qbb6.com
-     * @date: 2019/5/15
+     * 获得集合.
+     *
+     * @param kv            the kv
+     * @param classTypeName the class type name
+     * @param remark        the remark
+     * @param psiClass      the psi class
+     * @param project       the project
+     * @param name          the name
+     * @param pName         the p name
+     * @param childType     the child type
+     * @param index         the index
      */
     public static void getCollect(KV kv, String classTypeName, String remark, PsiClass psiClass, Project project, String name, String pName, String[] childType, Integer index) {
-        KV kvlist = new KV();
+        KV<String, Object> kvList = new KV<>();
         if (NormalTypes.isNormalType(classTypeName) || NormalTypes.collectTypes.containsKey(classTypeName)) {
-            kvlist.set("type",javaTypeToJsType(classTypeName));
+            kvList.set("type",javaTypeToJsType(classTypeName));
             if(!Strings.isNullOrEmpty(remark)) {
-                kvlist.set("description", remark);
+                kvList.set("description", remark);
             }
         } else {
-            kvlist.set(KV.by("type","object"));
-            kvlist.set(KV.by("description",(Strings.isNullOrEmpty(remark)?(""+psiClass.getName().trim()):remark+" ,"+psiClass.getName().trim())));
+            kvList.set(KV.by("type","object"));
+            kvList.set(KV.by("description",(Strings.isNullOrEmpty(remark)?(""+psiClass.getName().trim()):remark+" ,"+psiClass.getName().trim())));
             if(!pName.equals(psiClass.getName())) {
                 List<String> requiredList=new ArrayList<>();
-                kvlist.set("properties", getFields(psiClass, project, childType, index,requiredList));
-                kvlist.set("required",requiredList);
+                kvList.set("properties", getFields(psiClass, project, childType, index,requiredList));
+                kvList.set("required",requiredList);
                 addFilePaths(filePaths,psiClass);
             }else{
-                kvlist.set(KV.by("type",pName));
+                kvList.set(KV.by("type",pName));
             }
         }
         KV kv1=new KV();
         kv1.set(KV.by("type","array"));
         kv1.set(KV.by("description",(Strings.isNullOrEmpty(remark)?(""+psiClass.getName().trim()):remark+" ,"+psiClass.getName().trim())));
-        kv1.set("items",kvlist);
+        kv1.set("items",kvList);
         kv.set(name, kv1);
     }
 
 
     /**
-     * @description: 添加到文件路径列表
-     * @param: [filePaths, psiClass]
-     * @return: void
-     * @author: chengsheng@qbb6.com
-     * @date: 2019/5/6
+     * 添加到文件路径列表
+     *
+     * @param filePaths the file paths
+     * @param psiClass  the psi class
      */
-    public static void addFilePaths(Set<String> filePaths,PsiClass psiClass){
+    public static void addFilePaths(Set<String> filePaths, PsiClass psiClass) {
         try {
             filePaths.add(((PsiJavaFileImpl) psiClass.getContext()).getViewProvider().getVirtualFile().getPath());
-        }catch (Exception e){
+        } catch (Exception e) {
             try {
                 filePaths.add(((ClsFileImpl) psiClass.getContext()).getViewProvider().getVirtualFile().getPath());
-            }catch (Exception e1){
+            } catch (Exception e1) {
             }
         }
     }
 
 
     /**
-     * @description: 转换文件路径
-     * @param: [project]
-     * @return: void
-     * @author: chengsheng@qbb6.com
-     * @date: 2019/5/6
-     */ 
-    public static void changeFilePath(Project project){
-        Set<String> changeFilePaths=filePaths.stream().map(filePath->{
-            if(filePath.contains(".jar")){
-                String[] filePathsubs=  filePath.split("\\.jar");
-                String jarPath=filePathsubs[0]+"-sources.jar";
+     * 转换文件路径
+     *
+     * @param project the project
+     */
+    public static void changeFilePath(Project project) {
+        Set<String> changeFilePaths = filePaths.stream().map(filePath -> {
+            if (filePath.contains(".jar")) {
+                String[] filePathsubs = filePath.split("\\.jar");
+                String jarPath = filePathsubs[0] + "-sources.jar";
                 try {
                     //去解压源码包
-                    FileUnZipUtil.uncompress(new File(jarPath),new File(filePathsubs[0]));
-                    filePath=filePathsubs[0]+filePathsubs[1].replace("!","");
-                    return filePath.replace(".class",".java");
+                    FileUnZipUtil.uncompress(new File(jarPath), new File(filePathsubs[0]));
+                    filePath = filePathsubs[0] + filePathsubs[1].replace("!", "");
+                    return filePath.replace(".class", ".java");
                 } catch (IOException e) {
-                    Notification error = notificationGroup.createNotification("can not find sources java:"+jarPath, NotificationType.ERROR);
+                    Notification error = notificationGroup.createNotification("can not find sources java:" + jarPath, NotificationType.ERROR);
                     Notifications.Bus.notify(error, project);
                 }
             }

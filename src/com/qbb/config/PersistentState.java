@@ -3,6 +3,7 @@ package com.qbb.config;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
+import com.intellij.openapi.components.StoragePathMacros;
 import org.jdom.Element;
 import org.jetbrains.annotations.Nullable;
 

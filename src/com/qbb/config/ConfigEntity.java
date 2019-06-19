@@ -12,7 +12,8 @@ public class ConfigEntity {
     private String projectToken;
     private String projectType;
     private String projectId;
-    private String yapiUrl;
+    private String yApiUrl;
+    private String menu;
 
     /**
      * Sets project token.
@@ -44,10 +45,10 @@ public class ConfigEntity {
     /**
      * Sets yapi url.
      *
-     * @param yapiUrl the yapi url
+     * @param yApiUrl the yapi url
      */
-    public void setYapiUrl(String yapiUrl) {
-        this.yapiUrl = yapiUrl;
+    public void setyApiUrl(String yApiUrl) {
+        this.yApiUrl = yApiUrl;
     }
 
     /**
@@ -82,9 +83,26 @@ public class ConfigEntity {
      *
      * @return the yapi url
      */
-    public String getYapiUrl() {
-        return yapiUrl;
+    public String getyApiUrl() {
+        return yApiUrl;
     }
 
 
+    /**
+     * Gets menu.
+     *
+     * @return the menu
+     */
+    public String getMenu() {
+        return menu;
+    }
+
+    /**
+     * Sets menu.
+     *
+     * @param menu the menu
+     */
+    public void setMenu(String menu) {
+        this.menu = menu;
+    }
 }

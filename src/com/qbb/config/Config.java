@@ -12,6 +12,9 @@ import java.util.Map;
  */
 public class Config implements Serializable {
 
+    /**
+     *
+     */
     private boolean isSingle;
     private ConfigEntity singleConfig;
     private Map<String, ConfigEntity> multipleConfig;

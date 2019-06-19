@@ -56,13 +56,12 @@
     <!-- Add your extensions here -->
     <!-- 自定义配置界面  -->
     <applicationConfigurable instance="com.qbb.config.YApiSetting"  />
-    <applicationConfigurable instance="com.qbb.config.Settings"  />
     <applicationService serviceInterface="com.qbb.config.PersistentState" serviceImplementation="com.qbb.config.PersistentState"/>
   </extensions>
 
   <actions>
     <!-- Add your actions here -->
-    <action id="idea-yapi" class="com.qbb.interaction.UploadToYapi" text="idea-yapi" description="idea-yapi">
+    <action id="idea-yapi" class="com.qbb.interaction.UploadToYApi" text="idea-yapi" description="idea-yapi">
       <add-to-group group-id="EditorLangPopupMenu" anchor="first"/>
     </action>
   </actions>

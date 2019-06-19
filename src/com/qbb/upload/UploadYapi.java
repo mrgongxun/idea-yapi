@@ -37,7 +37,7 @@ public class UploadYapi {
      * @author: chengsheng@qbb6.com
      * @date: 2019/5/15
      */ 
-    public YapiResponse uploadSave(YapiSaveParam yapiSaveParam, String attachUpload, String path) throws IOException {
+    public YapiResponse uploadSave(YApiSaveParam yapiSaveParam, String attachUpload, String path) throws IOException {
         if(Strings.isNullOrEmpty(yapiSaveParam.getTitle())){
             yapiSaveParam.setTitle(yapiSaveParam.getPath());
         }
@@ -125,7 +125,7 @@ public class UploadYapi {
      * @author: chengsheng@qbb6.com
      * @date: 2019/5/15
      */
-    public YapiResponse getCatIdOrCreate(YapiSaveParam yapiSaveParam) {
+    public YapiResponse getCatIdOrCreate(YApiSaveParam yapiSaveParam) {
         Map<String, Integer> catMenuMap = catMap.get(yapiSaveParam.getProjectId().toString());
         if (catMenuMap != null) {
             if (!Strings.isNullOrEmpty(yapiSaveParam.getMenu())) {
