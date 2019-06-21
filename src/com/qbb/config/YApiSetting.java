@@ -143,6 +143,33 @@ public class YApiSetting implements Configurable {
                 "    }\n" +
                 "  }\n" +
                 "}";
+//        打包时使用
+//        return "{\n" +
+//                "  \"isSingle\": true,\n" +
+//                "  \"singleConfig\": {\n" +
+//                "    \"projectToken\": \"f10526011aa0231a6a7fd6b9ac09dea8896d2e0bc072524e5ba1ce61ef232503\",\n" +
+//                "    \"projectId\": \"82\",\n" +
+//                "    \"yApiUrl\": \"http://127.0.0.1:3300\",\n" +
+//                "    \"menu\": \"api\",\n" +
+//                "    \"projectType\": \"api\"\n" +
+//                "  },\n" +
+//                "  \"multipleConfig\": {\n" +
+//                "    \"model1\": {\n" +
+//                "      \"projectToken\": \"\",\n" +
+//                "      \"projectId\": \"\",\n" +
+//                "      \"yApiUrl\": \"\",\n" +
+//                "      \"menu\": \"api\",\n" +
+//                "      \"projectType\": \"\"\n" +
+//                "    },\n" +
+//                "    \"model2\": {\n" +
+//                "      \"projectToken\": \"\",\n" +
+//                "      \"projectId\": \"\",\n" +
+//                "      \"yApiUrl\": \"\",\n" +
+//                "      \"menu\": \"api\",\n" +
+//                "      \"projectType\": \"\"\n" +
+//                "    }\n" +
+//                "  }\n" +
+//                "}";
     }
 
 }
