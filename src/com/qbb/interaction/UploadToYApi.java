@@ -11,7 +11,7 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.qbb.build.BuildJsonForDubbo;
-import com.qbb.build.BuildJsonForYapi;
+import com.qbb.build.BuildJsonForYApi;
 import com.qbb.config.Config;
 import com.qbb.config.ConfigEntity;
 import com.qbb.config.PersistentState;
@@ -92,9 +92,9 @@ public class UploadToYApi extends AnAction {
      */
     private void webApiUpload(AnActionEvent anActionEvent, Project project, String projectToken, String projectId, String yApiUrl, String attachUpload, String menu) {
         //获得api 需上传的接口列表 参数对象
-        ArrayList<YapiApiDTO> yapiApiDTOS = new BuildJsonForYapi().actionPerformedList(anActionEvent, attachUpload);
-        if (Objects.nonNull(yapiApiDTOS)) {
-            for (YapiApiDTO yapiApiDTO : yapiApiDTOS) {
+        ArrayList<YapiApiDTO> yApiApiDTOS = new BuildJsonForYApi().actionPerformedList(anActionEvent, attachUpload);
+        if (Objects.nonNull(yApiApiDTOS)) {
+            for (YapiApiDTO yapiApiDTO : yApiApiDTOS) {
                 YApiSaveParam yapiSaveParam = new YApiSaveParam(projectToken, yapiApiDTO.getTitle(), yapiApiDTO.getPath(), yapiApiDTO.getParams(), yapiApiDTO.getRequestBody(), yapiApiDTO.getResponse(), Integer.valueOf(projectId), yApiUrl, true, yapiApiDTO.getMethod(), yapiApiDTO.getDesc(), yapiApiDTO.getHeader());
                 yapiSaveParam.setReq_body_form(yapiApiDTO.getReq_body_form());
                 yapiSaveParam.setReq_body_type(yapiApiDTO.getReq_body_type());

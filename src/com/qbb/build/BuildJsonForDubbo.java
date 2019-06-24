@@ -39,15 +39,14 @@ public class BuildJsonForDubbo{
 
 
     /**
-     * @description: 批量生成接口数据
-     * @param: [e]
-     * @return: java.util.ArrayList<com.qbb.dto.YapiDubboDTO>
-     * @author: chengsheng@qbb6.com
-     * @date: 2019/2/19
+     * 批量生成接口数据
+     *
+     * @param e the e
+     * @return the array list
      */
     public ArrayList<YapiDubboDTO> actionPerformedList(AnActionEvent e){
-        Editor editor = (Editor) e.getDataContext().getData(CommonDataKeys.EDITOR);
-        PsiFile psiFile = (PsiFile) e.getDataContext().getData(CommonDataKeys.PSI_FILE);
+        Editor editor = e.getDataContext().getData(CommonDataKeys.EDITOR);
+        PsiFile psiFile = e.getDataContext().getData(CommonDataKeys.PSI_FILE);
         String selectedText=e.getRequiredData(CommonDataKeys.EDITOR).getSelectionModel().getSelectedText();
         Project project = editor.getProject();
         if(Strings.isNullOrEmpty(selectedText)){
@@ -63,7 +62,7 @@ public class BuildJsonForDubbo{
             for(PsiMethod psiMethodTarget:psiMethods) {
                 //去除私有方法
                 if(!psiMethodTarget.getModifierList().hasModifierProperty("private")) {
-                    yapiDubboDTOS.add(actionPerformed(selectedClass, psiMethodTarget, project, psiFile));
+                    yapiDubboDTOS.add(this.actionPerformed(selectedClass, psiMethodTarget, project, psiFile));
                 }
             }
         }else{
@@ -83,6 +82,15 @@ public class BuildJsonForDubbo{
     }
 
 
+    /**
+     * Action performed yapi dubbo dto.
+     *
+     * @param selectedClass   the selected class
+     * @param psiMethodTarget the psi method target
+     * @param project         the project
+     * @param psiFile         the psi file
+     * @return the yapi dubbo dto
+     */
     public YapiDubboDTO actionPerformed(PsiClass selectedClass,PsiMethod psiMethodTarget,Project project,PsiFile psiFile) {
         YapiDubboDTO yapiDubboDTO=new YapiDubboDTO();
         ArrayList list=new ArrayList<KV>();
@@ -90,7 +98,7 @@ public class BuildJsonForDubbo{
         if(psiMethodTarget!=null){
             try {
                 // 获得响应
-                yapiDubboDTO.setResponse(BuildJsonForYapi.getResponse(project,psiMethodTarget.getReturnType()));
+                yapiDubboDTO.setResponse(BuildJsonForYApi.getResponse(project,psiMethodTarget.getReturnType()));
             } catch (JSONException e1) {
                 e1.printStackTrace();
             }
