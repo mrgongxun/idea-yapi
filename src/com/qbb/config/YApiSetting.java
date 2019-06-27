@@ -55,13 +55,6 @@ public class YApiSetting implements Configurable {
         final JLabel label3 = new JLabel();
         label3.setText("。。。");
         yApi.add(label3, new GridConstraints(12, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        final JLabel label4 = new JLabel();
-        label4.setText("例子 ： ");
-        yApi.add(label4, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        final JLabel label5 = new JLabel();
-        // label5.setEnabled(false);
-        label5.setText("{\"isSingle\":true,\"singleConfig\":{\"projectToken\":\"f10526011aa0231a6a7fd6b9ac09dea8896d2e0bc072524e5ba1ce61ef232503\",\"projectId\":\"82\",\"yapiUrl\":\"http://10.0.60.8:3300\",\"projectType\":\"api\"},\"multipleConfig\":{\"llb-api\":{\"projectToken\":\"\",\"projectId\":\"\",\"yapiUrl\":\"\",\"projectType\":\"\"},\"llb-admin-api\":{\"projectToken\":\"\",\"projectId\":\"\",\"yapiUrl\":\"\",\"projectType\":\"\"}}}");
-        yApi.add(label5, new GridConstraints(0, 1, 1, 2, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         config = new JTextArea();
         config.setText(StringUtils.isNotBlank(persistentState.getConfig()) ? persistentState.getConfig() : this.getDefaultConfig());
         yApi.add(config, new GridConstraints(11, 1, 1, 2, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
@@ -117,51 +110,24 @@ public class YApiSetting implements Configurable {
      * @return the default config
      */
     private String getDefaultConfig() {
-        return "{\n" +
-                "  \"isSingle\": true,\n" +
-                "  \"singleConfig\": {\n" +
-                "    \"projectToken\": \"f10526011aa0231a6a7fd6b9ac09dea8896d2e0bc072524e5ba1ce61ef232503\",\n" +
-                "    \"projectId\": \"82\",\n" +
-                "    \"yApiUrl\": \"http://10.0.60.8:3300\",\n" +
-                "    \"menu\": \"api\",\n" +
-                "    \"projectType\": \"api\"\n" +
-                "  },\n" +
-                "  \"multipleConfig\": {\n" +
-                "    \"llb-api\": {\n" +
-                "      \"projectToken\": \"\",\n" +
-                "      \"projectId\": \"\",\n" +
-                "      \"yApiUrl\": \"\",\n" +
-                "      \"menu\": \"api\",\n" +
-                "      \"projectType\": \"\"\n" +
-                "    },\n" +
-                "    \"llb-admin-api\": {\n" +
-                "      \"projectToken\": \"\",\n" +
-                "      \"projectId\": \"\",\n" +
-                "      \"yApiUrl\": \"\",\n" +
-                "      \"menu\": \"api\",\n" +
-                "      \"projectType\": \"\"\n" +
-                "    }\n" +
-                "  }\n" +
-                "}";
-//        打包时使用
 //        return "{\n" +
 //                "  \"isSingle\": true,\n" +
 //                "  \"singleConfig\": {\n" +
 //                "    \"projectToken\": \"f10526011aa0231a6a7fd6b9ac09dea8896d2e0bc072524e5ba1ce61ef232503\",\n" +
 //                "    \"projectId\": \"82\",\n" +
-//                "    \"yApiUrl\": \"http://127.0.0.1:3300\",\n" +
+//                "    \"yApiUrl\": \"http://10.0.60.8:3300\",\n" +
 //                "    \"menu\": \"api\",\n" +
 //                "    \"projectType\": \"api\"\n" +
 //                "  },\n" +
 //                "  \"multipleConfig\": {\n" +
-//                "    \"model1\": {\n" +
+//                "    \"llb-api\": {\n" +
 //                "      \"projectToken\": \"\",\n" +
 //                "      \"projectId\": \"\",\n" +
 //                "      \"yApiUrl\": \"\",\n" +
 //                "      \"menu\": \"api\",\n" +
 //                "      \"projectType\": \"\"\n" +
 //                "    },\n" +
-//                "    \"model2\": {\n" +
+//                "    \"llb-admin-api\": {\n" +
 //                "      \"projectToken\": \"\",\n" +
 //                "      \"projectId\": \"\",\n" +
 //                "      \"yApiUrl\": \"\",\n" +
@@ -170,6 +136,33 @@ public class YApiSetting implements Configurable {
 //                "    }\n" +
 //                "  }\n" +
 //                "}";
+//        打包时使用
+        return "{\n" +
+                "  \"isSingle\": true,\n" +
+                "  \"singleConfig\": {\n" +
+                "    \"projectToken\": \"f10526011aa0231a6a7fd6b9ac09dea8896d2e0bc072524e5ba1ce61ef232503\",\n" +
+                "    \"projectId\": \"82\",\n" +
+                "    \"yApiUrl\": \"http://127.0.0.1:3300\",\n" +
+                "    \"menu\": \"api\",\n" +
+                "    \"projectType\": \"api\"\n" +
+                "  },\n" +
+                "  \"multipleConfig\": {\n" +
+                "    \"model1\": {\n" +
+                "      \"projectToken\": \"\",\n" +
+                "      \"projectId\": \"\",\n" +
+                "      \"yApiUrl\": \"\",\n" +
+                "      \"menu\": \"api\",\n" +
+                "      \"projectType\": \"\"\n" +
+                "    },\n" +
+                "    \"model2\": {\n" +
+                "      \"projectToken\": \"\",\n" +
+                "      \"projectId\": \"\",\n" +
+                "      \"yApiUrl\": \"\",\n" +
+                "      \"menu\": \"api\",\n" +
+                "      \"projectType\": \"\"\n" +
+                "    }\n" +
+                "  }\n" +
+                "}";
     }
 
 }

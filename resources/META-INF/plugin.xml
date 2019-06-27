@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>idea-yapi</id>
   <name>idea-yapi</name>
-  <version>1.0</version>
+  <version>1.0.1</version>
   <vendor email="gongxun@superfeng.com" url="http://www.superfeng.com">superfeng</vendor>
 
   <description>
@@ -13,15 +13,17 @@
 
   <change-notes>
     <![CDATA[
-      <a href="https://github.com/diwand/YapiIdeaUploadPlugin">本插件在此原本插件1.6.8 基础上开发</a> <br>
-      <em>
-        - 支持 dubbo和web api接口
-        - 支持 批量上传
-        - 支持 多模块
-        - 支持 spring mvc注解
-        - 支持 Setting 中配置
-        - 支持 配置持久化
-      </em>
+      <a href="https://github.com/diwand/YapiIdeaUploadPlugin">本插件在YapiUpload1.6.8 基础上二次开发</a> <br>
+      <em> 1.0.1 </em> <br>
+      <em>  - 将原有xml配置方式改为 Setting 中配置，并配置持久化 </em> <br>
+      <em>  - 将原本上传的数据类型做了优化，上传后数据类型为js的数据类型 </em> <br>
+
+      <br>
+      <br>
+
+      <em>使用方式 </em> <br>
+      <em> 1.在idea设置中找到 OtherSettings -> YApiSetting，在配置栏填写JSON配置信息 </em> <br>
+      <em> 2.选中需要上传的接口方法名或类名，右键 -> idea-yapi </em> <br>
     ]]>
   </change-notes>
 
