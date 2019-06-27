@@ -17,7 +17,7 @@ import java.util.Objects;
  * /Users/gongxun/Library/Preferences/IntelliJIdea2019.1/options/YApiConfig.xml
  * /Users/gongxun/Library/Caches/IntelliJIdea2019.1/plugins-sandbox/config/options/Users/gongxun/Desktop/YApiConfig.xml
  * /Users/gongxun/Library/Caches/IntelliJIdea2019.1/plugins-sandbox/config/options/YApiConfig.xml
- * @version 1.0 2019年06月14日 15:02 by 宫珣（gongxun@cloud-young.com）创建
+ * @version 1.0 2019年06月14日 15:02
  */
 @State(name = "YApiConfig", storages = {@com.intellij.openapi.components.Storage(file = "$APP_CONFIG$/YApiConfig.xml")})
 public class PersistentState implements PersistentStateComponent<Element> {

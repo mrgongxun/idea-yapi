@@ -34,7 +34,7 @@ import java.util.Objects;
  * Copyright (c) Department of Research and Development/Beijing
  * All Rights Reserved.
  *
- * @version 1.0 2019年06月13日 15:27 by 宫珣（gongxun@cloud-young.com）创建
+ * @version 1.0 2019年06月13日 15:27
  */
 public class UploadToYApi extends AnAction {
 

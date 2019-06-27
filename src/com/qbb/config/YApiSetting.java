@@ -17,7 +17,7 @@ import java.awt.*;
  * Copyright (c) Department of Research and Development/Beijing
  * All Rights Reserved.
  *
- * @version 1.0 2019年06月14日 17:32 by 宫珣（gongxun@cloud-young.com）创建
+ * @version 1.0 2019年06月14日 17:32
  */
 public class YApiSetting implements Configurable {
 

@@ -5,7 +5,7 @@ package com.qbb.config;
  * Copyright (c) Department of Research and Development/Beijing
  * All Rights Reserved.
  *
- * @version 1.0 2019年06月14日 18:45 by 宫珣（gongxun@cloud-young.com）创建
+ * @version 1.0 2019年06月14日 18:45
  */
 public class ConfigEntity {
 

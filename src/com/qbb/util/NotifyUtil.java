@@ -10,7 +10,7 @@ import com.intellij.openapi.project.Project;
  * Description: log util
  * Copyright (c) Department of Research and Development/Beijing
  * All Rights Reserved.
- * @version 1.0 2019年06月19日 18:07 by 宫珣（gongxun@cloud-young.com）创建
+ * @version 1.0 2019年06月19日 18:07
  */
 public class NotifyUtil {
 
