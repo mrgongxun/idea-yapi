@@ -29,3 +29,5 @@ java
    - 1.在idea设置中找到 OtherSettings -> YApiSetting，在配置栏填写JSON配置信息 <br>
    - 2.选中需要上传的接口方法名或类名，右键 -> idea-yapi  <br>
 
+#### 开发注意
+   - 导入项目需要注意 生成的 ROOT.iml 中 type 必须为PLUGIN_MODULE 才能正常运行其代码
