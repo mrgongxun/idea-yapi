@@ -150,7 +150,7 @@ public class BuildJsonForYApi {
      * @param attachUpload    the attach upload
      * @return the yapi api dto
      */
-    private YapiApiDTO actionPerformed(PsiClass selectedClass, PsiMethod psiMethodTarget, Project project, String attachUpload) {
+    private YapiApiDTO  actionPerformed(PsiClass selectedClass, PsiMethod psiMethodTarget, Project project, String attachUpload) {
         YapiApiDTO yapiApiDTO = new YapiApiDTO();
         // 获得路径
         StringBuilder path = new StringBuilder();
@@ -320,19 +320,18 @@ public class BuildJsonForYApi {
      * @return the string
      */
     private String switchRequestMethod(String requestMethod) {
-        switch (requestMethod) {
-            case "GET":
-                return "GET";
-            case "POST":
-                return "POST";
-            case "PUT":
-                return "PUT";
-            case "DELETE":
-                return "DELETE";
-            case "PATCH":
-                return "PATCH";
-            default:
-                return "";
+        if (requestMethod.contains("GET")) {
+            return "GET";
+        } else if (requestMethod.contains("POST")) {
+            return "POST";
+        } else if (requestMethod.contains("PUT")) {
+            return "PUT";
+        } else if (requestMethod.contains("DELETE")) {
+            return "DELETE";
+        } else if (requestMethod.contains("PATCH")) {
+            return "PATCH";
+        } else {
+            return "";
         }
     }
 
