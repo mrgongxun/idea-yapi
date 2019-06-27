@@ -22,6 +22,7 @@ import com.qbb.dto.YapiPathVariableDTO;
 import com.qbb.dto.YapiQueryDTO;
 import com.qbb.upload.UploadYapi;
 import com.qbb.util.*;
+import org.apache.commons.lang.StringUtils;
 import org.codehaus.jettison.json.JSONException;
 
 import java.io.File;
@@ -387,6 +388,7 @@ public class BuildJsonForYApi {
                                         yapiQueryDTO.setName(psiNameValuePair.getValue().getText().replace("\"", ""));
                                     }
                                 } else if ("required".equals(psiNameValuePair.getName())) {
+                                    yapiQueryDTO.setName(psiParameter.getName());
                                     yapiQueryDTO.setRequired(psiNameValuePair.getValue().getText().replace("\"", "").replace("false", "0").replace("true", "1"));
                                 } else if ("defaultValue".equals(psiNameValuePair.getName())) {
                                     if (yapiHeaderDTO != null) {
@@ -396,16 +398,16 @@ public class BuildJsonForYApi {
                                     }
                                 } else {
                                     if (yapiHeaderDTO != null) {
-                                        yapiHeaderDTO.setName(psiNameValuePair.getLiteralValue());
+                                        yapiHeaderDTO.setName(StringUtils.isNotBlank(psiNameValuePair.getLiteralValue()) ? psiNameValuePair.getLiteralValue() : psiParameter.getName());
                                         // 通过方法注释获得 描述 加上 类型
                                         yapiHeaderDTO.setDesc(DesUtil.getParamDesc(psiMethodTarget, psiParameter.getName()) + "(" + psiParameter.getType().getPresentableText() + ")");
                                     }
                                     if (yapiPathVariableDTO != null) {
-                                        yapiPathVariableDTO.setName(psiNameValuePair.getLiteralValue());
+                                        yapiPathVariableDTO.setName(StringUtils.isNotBlank(psiNameValuePair.getLiteralValue()) ? psiNameValuePair.getLiteralValue() : psiParameter.getName());
                                         // 通过方法注释获得 描述 加上 类型
                                         yapiPathVariableDTO.setDesc(DesUtil.getParamDesc(psiMethodTarget, psiParameter.getName()) + "(" + psiParameter.getType().getPresentableText() + ")");
                                     } else {
-                                        yapiQueryDTO.setName(psiNameValuePair.getLiteralValue());
+                                        yapiQueryDTO.setName(StringUtils.isNotBlank(psiNameValuePair.getLiteralValue()) ? psiNameValuePair.getLiteralValue() : psiParameter.getName());
                                         // 通过方法注释获得 描述 加上 类型
                                         yapiQueryDTO.setDesc(DesUtil.getParamDesc(psiMethodTarget, psiParameter.getName()) + "(" + psiParameter.getType().getPresentableText() + ")");
                                     }
