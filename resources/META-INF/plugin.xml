@@ -17,13 +17,25 @@
       <em> 1.0.1 </em> <br>
       <em>  - 将原有xml配置方式改为 Setting 中配置，并配置持久化 </em> <br>
       <em>  - 将原本上传的数据类型做了优化，上传后数据类型为js的数据类型 </em> <br>
-
-      <br>
       <br>
 
       <em>使用方式 </em> <br>
       <em> 1.在idea设置中找到 OtherSettings -> YApiSetting，在配置栏填写JSON配置信息 </em> <br>
       <em> 2.选中需要上传的接口方法名或类名，右键 -> idea-yapi </em> <br>
+
+      <br>
+      <br>
+
+      <a href="https://github.com/diwand/YapiIdeaUploadPlugin">This plug-in is redeveloped on the basis of YapiUpload 1.6.8 </a> <br>
+      <em> 1.0.1 </em> <br>
+      <em>  - Change the original XML configuration to configuration in Setting and configure persistence </em> <br>
+      <em>  - The original upload data type is optimized, and the data type after upload is JS data type </em> <br>
+      <br>
+
+      <em>Usage </em> <br>
+      <em> 1.Find Other Settings - > YApiSetting in the Idea settings and fill in the JSON configuration information in the configuration bar </em> <br>
+      <em> 2.Select the name of the interface method or class to upload, right-click - > idea-yapi </em> <br>
+
     ]]>
   </change-notes>
 
